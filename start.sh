@@ -1,7 +1,13 @@
 #!/usr/bin/bash
 set -eu
 
+# Step 1: Precompile the assets
+RAILS_ENV=production bundle exec rails assets:precompile
+
+# Step 2: Migrate the database
 bundle exec rake db:migrate
+
+# Step 3: Create or update the admin account
 # https://docs.joinmastodon.org/admin/setup/#admin-cli
 RAILS_ENV=production bin/tootctl accounts create \
   "$OWNER_USERNAME" \
