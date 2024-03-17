@@ -13,4 +13,8 @@ bundle exec rake db:migrate
 #   --confirmed \
 #   --role Owner || true
 
+# 输出当前的 Node.js 版本
+node_version=$(node -v)
+echo "Current Node.js version is: $node_version"
+
 npx concurrently "bundle exec puma -C config/puma.rb" "bundle exec sidekiq"
