@@ -16,7 +16,7 @@ bundle exec rake db:migrate
 
 # 检查concurrently是否安装，如果没有，则安装它
 if ! type "concurrently" > /dev/null; then
-  npm install -g concurrently
+  npm install concurrently
 fi
 
 npx concurrently "bundle exec puma -C config/puma.rb" "bundle exec sidekiq"
